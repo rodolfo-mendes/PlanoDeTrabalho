@@ -1,36 +1,37 @@
 \section{Introdução} \label{sec:introducao}
 
-A análise de séries temporais de imagens de satélite tem se mostrado
-uma importante ferramenta no estudo dos impactos das mudanças climáticas
-globais. A partir destas séries temporais, é possível analisar o uso e 
-a cobertura do solo em uma determinada região, e como este uso varia ao longo
-do tempo.
+A análise de séries temporais de imagens de satélite tem se mostrado uma
+importante ferramenta no estudo dos impactos das mudanças climáticas globais.
+A partir destas séries temporais, é possível analisar o uso e a cobertura do
+solo em uma determinada região, e como este uso varia ao longo do tempo.
 
-Uma das possíveis técnicas para extrair conhecimento destas imagens é o 
-agrupamento de séries temporais. A partir das imagens de satélite, métricas
-como temperatura da superfície, índice de reflexão e índice de vegetação são
-extraídos para cada pixel da imagem, para cada instante no tempo. O agrupamento
-das séries temporais obtidas, combinado com a visualização em mapa a quais grupos
-cada série pertence, permite ao tomador de decisão entender como o uso do solo
-está distribuído em uma região.
+Uma das possíveis técnicas para extrair conhecimento destas imagens é o
+agrupamento de séries temporais. A partir das imagens de satélite, métricas como
+temperatura da superfície, índice de reflexão e índice de vegetação são
+extraídos para cada pixel da imagem, para cada instante no tempo. O agrupamento 
+das séries temporais obtidas, combinado com a visualização em mapa a quais
+grupos cada série pertence, permite ao tomador de decisão entender como o uso do
+solo está distribuído em uma região.
 
-Por sua vez, o avanço das tecnologias de sensoreamento têm permitido que satélites
-coletem imagens com resoluções cada vez maiores. Isso significa que os conjuntos
-de dados são representados por um número cada vez maior de séries temporais, na
-ordem de milhões e até mesmo bilhões de séries para serem agrupadas.
+Por sua vez, o avanço das tecnologias de sensoreamento têm permitido que
+satélites coletem imagens com resoluções cada vez maiores. Isso significa que os
+conjuntos de dados são representados por um número cada vez maior de séries
+temporais, na ordem de milhões e até mesmo bilhões de séries para serem
+agrupadas.
 
-Por meio do algoritmo k-médias é possível agrupar dados com complexidade de tempo linear, $O(n)$.
-Porém, esse algoritmo possui algumas desvantagens com relação ao significado
-dos agrupamentos gerados. Uma destas desvantagens é a necessidade do usuário
-fornecer antecipadamente o número de agrupamentos desejados através do 
-parâmetro $k$. Ou seja, é necessário que o usuário tenha algum conhecimento
-prévio sobre o domínio do problema e que ele tenha uma estimativa do número de 
-grupos existente no conjunto de dados. Outra limitação está relacionada ao formato dos
-agrupamentos no espaço dos atributos. No k-médias, cada instância
-do conjunto de dados é atribuída ao grupo cujo centro esteja mais próximo, que 
-por sua vez é recalculado a cada iteração. Assim, os agrupamentos tendem a ter formatos
-esféricos ou regiões densas são divididas por hiperplanos separadores projetados, o que
-nem sempre corresponde à melhor descrição dos dados.
+Por meio do algoritmo k-médias é possível agrupar dados com complexidade de
+tempo linear, $O(n)$. Porém, esse algoritmo possui algumas desvantagens com
+relação ao significado dos agrupamentos gerados. Uma destas desvantagens é a
+necessidade do usuário fornecer antecipadamente o número de agrupamentos
+desejados através do parâmetro $k$. Ou seja, é necessário que o usuário tenha
+algum conhecimento prévio sobre o domínio do problema e que ele tenha uma
+estimativa do número de grupos existente no conjunto de dados. Outra limitação
+está relacionada ao formato dos agrupamentos no espaço dos atributos.
+No k-médias, cada instância do conjunto de dados é atribuída ao grupo cujo
+centro esteja mais próximo, que por sua vez é recalculado a cada iteração.
+Assim, os agrupamentos tendem a ter formatos esféricos ou regiões densas são
+divididas por hiperplanos separadores projetados, o que nem sempre corresponde à
+melhor descrição dos dados.
 
 Uma abordagem alternativa são os algoritmos hierárquicos aglomerativos. Nestes
 algoritmos, cada instância do conjunto de dados é colocada em seu próprio grupo
@@ -38,17 +39,20 @@ inicialmente. Em seguida, os agrupamentos são aglutinados em grupos maiores,
 formando uma hierarquia de grupos. Diferentemente do k-médias, o usuário
 não precisa fornecer o número $k$ de grupos previamente. Embora a saída do 
 algoritmo hierárquico seja um dendograma (uma hierarquia de grupos), este pode
-ser convertido em uma partição de $k$ grupos por meio de uma poda na árvore resultante.
-Por sua vez, as partições resultantes deste processo não estão limitadas a formatos esféricos,
-sendo o algoritmo capaz de detectar agrupamento
+ser convertido em uma partição de $k$ grupos por meio de uma poda na árvore
+resultante. Por sua vez, as partições resultantes deste processo não estão
+limitadas a formatos esféricos, sendo o algoritmo capaz de detectar agrupamento
 com formatos arbitrários. Apesar dessas vantagens, os algoritmos hierárquicos
-tem alto custo computacional, de ordem $O(n^2)$ (quadrática) ou $O(n^3)$ 
-(cúbica) para tempo e espaço, tornando sua aplicação impraticável para grandes conjuntos
-de dados como séries temporais de imagens de satélites de alta resolução.
+tem alto custo computacional, de ordem $O(n^2)$ (quadrática) ou $O(n^3)$
+(cúbica) para tempo e espaço, tornando sua aplicação impraticável para grandes
+conjuntos de dados como séries temporais de imagens de satélites de alta
+resolução.
 
 Neste trabalho, propomos uma nova abordagem para que se possa aproveitar
 as vantagens dos algoritmos hierárquicos mesmo em grandes conjuntos de dados.
-Esta abordagem consiste em, inicialmente, reduzir o conjunto de dados, e, em seguida, aplicar o agrupamento hierárquico neste conjunto de dados reduzido. Por fim, as instâncias restantes são atribuídas ao seu vizinho mais próximo (1-NN)
+Esta abordagem consiste em, inicialmente, reduzir o conjunto de dados, e em
+seguida, aplicar o agrupamento hierárquico neste conjunto de dados reduzido. Por
+fim, as instâncias restantes são atribuídas ao seu vizinho mais próximo (1-NN)
 completando o agrupamento. Espera-se que, com esta abordagem, seja possível
 aplicar o agrupamento hierárquico em tempo consideravelmente menor, mas sem
 perder a qualidade dos agrupamentos resultantes.
@@ -56,22 +60,31 @@ perder a qualidade dos agrupamentos resultantes.
 
 \subsection{Objetivos e Desafios de Pesquisa}
 
-O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o agrupamento hierárquico de séries espaço-temporais de imagens de satélite que permita reduzir significativamente a complexidade de tempo de execução e espaço do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos.
+O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o
+agrupamento hierárquico de séries espaço-temporais de imagens de satélite que
+permita reduzir significativamente a complexidade de tempo de execução e espaço
+do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos.
 Especificamente, deseja-se:
 
 \begin{enumerate}
-    \item Desenvolver uma abordagem para o agrupamento hierárquico aglomerativo de séries espaço-temporais incluindo uma etapa de pré-processamento baseada em redução de dados, especificamente por meio da geração de amostragens aleatória uniforme 
+    \item Desenvolver uma abordagem para o agrupamento hierárquico aglomerativo
+		de séries espaço-temporais incluindo uma etapa de pré-processamento baseada
+		em redução de dados, especificamente por meio da geração de amostragens
+		aleatória uniforme 
     
-    \item Avaliar experimentalmente a nova abordagem em termos de tempo de execução, consumo de memória e qualidade dos agrupamentos gerados visando o agrupamento dos diversos tipos de vegetação para identificação de áreas de plantio de culturas como a cana-de-açúcar
+    \item Avaliar experimentalmente a nova abordagem em termos de tempo de
+		execução, consumo de memória e qualidade dos agrupamentos gerados visando o
+		agrupamento dos diversos tipos de vegetação para identificação de áreas de
+		plantio de culturas como a cana-de-açúcar
 \end{enumerate}
 
 \subsection{Hipótese}
 
-A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto
-dos dados de entrada permite executar o agrupamento hierárquico aglomerativo
-em tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
+A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos
+dados de entrada permite executar o agrupamento hierárquico aglomerativo em
+tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
 
 \subsection{Contribuição}
 
 A contribuição esperada é uma estratégia para o agrupamento hierárquico
-aglomerativo que produza respostas mais rápidas para o usuário.  
+aglomerativo que produza respostas mais rápidas para o usuário.
