@@ -11,20 +11,34 @@ tomada de decisão e até mesmo ampliação do conhecimento científico sobre um
 determinado fenômeno \cite{tan2009introducao}.
 
 O processo de KDD envolve desde a aquisição dos dados até a disponibilização do
-conhecimento para o usuário final, assim, o processo de KDD pode ser enumerado
-nas seguintes etapas:
+conhecimento para o usuário final. De acordo com \cite{tan2009introducao},
+este processo pode ser descrito pelas seguintes etapas:
 
 \begin{enumerate}
-    \item Aquisição ou coleta de dados
     \item Pré-processamento
     \item Mineração de dados
     \item Pós-processamento
-    \item Apresentação do conhecimento
 \end{enumerate}
 
+O objetivo da etapa de pré-processamento é preparar os dados que alimentarão a 
+etapa de mineração de dados. Nesta etapa, podem ser realizadas uma série de
+tarefas que visam aumentar a qualidade dos dados fornecidos à mineração de
+dados. Na tarefa de \emph{limpeza dos dados}, são tratados atributos sem valor
+definido e ruídos. A tarefa de \emph{integração de dados} consiste
+em consolidar fontes de dados de diversos tipos (arquivos de texto, planilhas,
+\emph{web-services}, arquivos XML, bancos de dados) em uma única fonte de dados
+consolidada, usualmente um \emph{data-warehouse}. A \emph{redução da
+dimensionalidade} consiste em diminuir o número de atributos que serão
+considerados na mineração de dados. Dentre as principais técnicas podemos citar
+PCA (\emph{Principal Component Analysis}) e DWT (\emph{Discrete Wavelets
+Transforms}). Por fim, a \emph{redução da numerosidade} busca representar o
+conjunto de dados através de um número reduzido de instâncias
+\cite{han2011data}.                                                   
 
 
-% introduzir brevemente os tipos de algoritmos de agrupamento, particionamento e hierarquico
+
+% introduzir brevemente os tipos de algoritmos de agrupamento, particionamento e
+% hierarquico
 
 % introduzir as tecnicas de agrupamento hierarquico: divisivo versus aglomerativo
 
