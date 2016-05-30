@@ -1,5 +1,10 @@
 \section{Revisão da Literatura Correlata} \label{sec:fundamentacao_teorica}
 
+Nesta seção apresentaremos os principais conceitos teóricos relacionados ao
+trabalho desenvolvido. Na subseção \ref{subsec:descoberta_conhecimento_bd}
+apresentaremos o processo de descoberta de conhecimento em banco de dados e
+suas principais etapas. 
+
 \subsection{Descoberta de Conhecimento em Bancos de Dados}
 	\label{subsec:descoberta_conhecimento_bd}
 
@@ -47,7 +52,21 @@ preciso que se estabeleça uma \emph{medida de similaridade} entre as instância
 do banco de dados, de forma que se maximize a similaridade entre instâncias do
 mesmo grupo e se minimize a similaridade entre instâncias de grupos diferentes.
 
+Por fim, na etapa de pós-processamento avalia-se se os padrões descobertos de
+fato representam um \emph{conhecimento} novo sobre os dados. Para cada tipo
+de padrão descoberto, pode-se estabelecer uma \emph{medida objetiva} sobre a
+qualidade do padrão \cite{han2011data}. No caso dos agrupamentos, por exemplo,
+a qualidade destes pode ser medida em termos de \emph{coesão} e \emph{separação}
+\cite{tan2009introducao}.
 
+Neste trabalho, será enfatizada a tarefa de agrupamento de dados, com atenção
+especial aos algoritmos hierárquicos de agrupamento. Também será discutido como
+as técnicas de redução de numerosidade influenciam o tempo de execução dos
+algoritmos hierárquicos e a qualidade dos agrupamentos produzidos.
+
+
+\subsection{Análise de Agrupamentos}
+	\label{subsec:analise_agrupamentos}
 
 % introduzir brevemente os tipos de algoritmos de agrupamento, particionamento e
 % hierarquico
