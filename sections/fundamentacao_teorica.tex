@@ -91,6 +91,26 @@ realocar os objetos em grupos mais significativos até que um critério de parad
 seja atingido. Podemos incluir nesta categoria os algoritmos \emph{k-médias} e
 \emph{k-medoids}.
 
+Uma abordagem alternativa é o agrupamento \emph{hierárquico}. Nesta abordagem, 
+os objetos são organizados em uma hierarquia de grupos. Por sua vez, esta
+hierarquia pode ser construída por duas maneiras diferentes:
+\emph{aglomerativa} e \emph{divisiva}.
+
+Na abordagem aglomerativa cada objeto de dados é inicialmente incluído em seu
+próprio grupo. Em seguida, cada grupo é aglomerado com o seu grupo mais próximo,
+formando uma relação "pai-filho" entre o grupo resultante e os grupos menores.
+Esse processo se repete até que um único grupo, que contenha todos os dados do 
+conjunto, seja obtido. Já na abordagem divisiva o processo se inverte. Todos os
+objetos de dados são agrupados em um único grupo inicial, que será a raiz da 
+hierarquia. Por sua vez, este grupo inicial é sucessivamente dividido em grupos
+menores, até que cada objeto esteja em seu próprio grupo.
+
+Na subseção \ref{subsec:abordagem_hierarquica} será a abordagem hierárquica será
+explorada com mais detalhes. 
+
+\subsection{Abordagem Hierárquica para Agrupamentos}
+	\label{subsec:abordagem_hierarquica}
+
 % introduzir brevemente os tipos de algoritmos de agrupamento, particionamento e
 % hierarquico
 
