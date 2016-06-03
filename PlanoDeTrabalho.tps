@@ -35,8 +35,8 @@ Class=LaTeXView
 Document=sections\fundamentacao_teorica.tex
 
 [Frame1_View0,0]
-TopLine=91
-Cursor=6415
+TopLine=130
+Cursor=8358
 
 [Frame2]
 Flags=0
@@ -71,8 +71,8 @@ Class=LaTeXView
 Document=sections\introducao.tex
 
 [Frame3_View0,0]
-TopLine=58
-Cursor=4357
+TopLine=0
+Cursor=0
 
 [Frame4]
 Flags=0

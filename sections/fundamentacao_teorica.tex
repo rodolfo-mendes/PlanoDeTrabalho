@@ -59,28 +59,47 @@ qualidade do padrão \cite{han2011data}. No caso dos agrupamentos, por exemplo,
 a qualidade destes pode ser medida em termos de \emph{coesão} e \emph{separação}
 \cite{tan2009introducao}.
 
-Neste trabalho, será enfatizada a tarefa de agrupamento de dados, com atenção especial aos algoritmos hierárquicos de agrupamento. Também será discutido como as técnicas de redução de numerosidade influenciam o tempo de execução dos algoritmos hierárquicos e a qualidade dos agrupamentos produzidos, como etapa de pré-processamento.
+Neste trabalho, será enfatizada a tarefa de agrupamento de dados, com atenção
+especial aos algoritmos hierárquicos de agrupamento. Também será discutido como
+as técnicas de redução de numerosidade influenciam o tempo de execução dos
+algoritmos hierárquicos e a qualidade dos agrupamentos produzidos, como etapa de
+pré-processamento.
 
 
 \subsection{Técnicas de Amostragem de dados}
 	\label{subsec:amostragem}
 	
-O objetivo das técnicas de amostragem de dados é reduzir o número de instâncias submetidas aos algoritmos de mineração de dados. Entre os desafios da amostragem de dados estão o balanceamento das instâncias com relação à ocorrência de instâncias raras ou de exceções.
-Conside um conjunto $T$ com cardinalidade $|T| = N$. Entre as técnicas propostas na literatura destacam-se \cite{Garcia2015}:
+O objetivo das técnicas de amostragem de dados é reduzir o número de instâncias
+submetidas aos algoritmos de mineração de dados. Entre os desafios da amostragem
+de dados estão o balanceamento das instâncias com relação à ocorrência de
+instâncias raras ou de exceções. Conside um conjunto $T$ com cardinalidade
+$|T| = N$. Entre as técnicas propostas na literatura destacam-se
+\cite{Garcia2015}:
 
 \begin{itemize}
-    \item Amostragem aleatória de tamanho $s$ sem substituição: criada pela escolha de $s$ instâncias de $T$ ($s < N$), onde a probabilidade de um exemplo ser escolhido é de $1/N$, de modo que todas as instâncias têm a mesma chance de serem escolhidas;
+    \item Amostragem aleatória de tamanho $s$ sem substituição: criada pela
+		escolha de $s$ instâncias de $T$ ($s < N$), onde a probabilidade de um
+		exemplo ser escolhido é de $1/N$, de modo que todas as instâncias têm a
+		mesma chance de serem escolhidas;
     
-    \item Amostragem aleatória de tamanho $s$ com substituição: semelhante à anterior, exceto pelo fato que a cada vez que uma instância é escolhida, permanece no conjunto e pode ser escolhida novamente;
+    \item Amostragem aleatória de tamanho $s$ com substituição: semelhante à
+		anterior, exceto pelo fato que a cada vez que uma instância é escolhida,
+		permanece no conjunto e pode ser escolhida novamente;
     
-    \item Amostragem balanceada: criada levando-se em consideração um conjunto de critérios pré-definidos, por exemplo, para manter a proporcionalidade de instâncias entre classes conhecidas;
+    \item Amostragem balanceada: criada levando-se em consideração um conjunto
+		de critérios pré-definidos, por exemplo, para manter a proporcionalidade
+		de instâncias entre classes conhecidas;
     
-    \item Amostragem de agrupamentos: escolha de grupos específicos resultantes de técnicas de agrupamento;
+    \item Amostragem de agrupamentos: escolha de grupos específicos resultantes
+		de técnicas de agrupamento;
     
-    \item Amostragem estratificada: obtida por meio da divisão de um conjunto $T$ em partes mutualmente disjunta seguida da escolha de uma amostragem aleatória em cada divisão.
+    \item Amostragem estratificada: obtida por meio da divisão de um conjunto
+		$T$ em partes mutualmente disjunta seguida da escolha de uma amostragem
+		aleatória em cada divisão.
 \end{itemize}
 
-% Descrever as técnicas correlatas: Original Data Squashing (DS) e Likelihood-based Data Squashing (LDS).
+% Descrever as técnicas correlatas:
+% Original Data Squashing (DS) e Likelihood-based Data Squashing (LDS).
 
 
 
@@ -129,11 +148,13 @@ explorada com mais detalhes.
 
 \subsection{Abordagem Hierárquica para Agrupamentos}
 	\label{subsec:abordagem_hierarquica}
+	
+Na abordagem hierárquica de agrupamento, os grupos são organizados em árvore,
+de forma as instâncias de dados são as folhas e a raiz é o grupo que representa
+o conjunto de dados completo.  
 
-% introduzir brevemente os tipos de algoritmos de agrupamento, particionamento e
-% hierarquico
-
-% introduzir as tecnicas de agrupamento hierarquico: divisivo versus aglomerativo
+% introduzir as tecnicas de agrupamento hierarquico: divisivo versus
+% aglomerativo
 
 % 29/05:
 % apresentar os algoritmos single-link, complete-link, birch e dbscan
@@ -144,14 +165,40 @@ explorada com mais detalhes.
 \subsection{Fractais e a propriedade de auto-similaridade}
 	\label{subsec:fractais}
 
-Um fractal pode ser definido pelo conceito de auto similaridade, no qual partes de qualquer tamanho de um fractal são similares (exata ou estatisticamente) ao conjunto todo. Um exemplo clássico de um fractal criado por meio da construção repetitiva é o triângulo de Sierpinski, construído por meio de um processo iterativo, onde se retira de um triângulo o triângulo central e para cada triângulo resultante realiza-se o mesmo processo, recursivamente, conforme apresentado na Figura \ref{fig:constrsierpinski}. O triângulo de Sierpinski apresenta características interessantes, como o fato de cada triângulo interior ser uma miniatura do triângulo em que está inserido, perímetro tendendo ao infinito e área tendendo a zero quando o número de iterações tende ao infinito \cite{Schroeder91}. 
+Um fractal pode ser definido pelo conceito de auto similaridade, no qual partes
+de qualquer tamanho de um fractal são similares (exata ou estatisticamente) ao
+conjunto todo. Um exemplo clássico de um fractal criado por meio da construção
+repetitiva é o triângulo de Sierpinski, construído por meio de um processo
+iterativo, onde se retira de um triângulo o triângulo central e para cada
+triângulo resultante realiza-se o mesmo processo, recursivamente, conforme
+apresentado na Figura \ref{fig:constrsierpinski}. O triângulo de Sierpinski
+apresenta características interessantes, como o fato de cada triângulo interior
+ser uma miniatura do triângulo em que está inserido, perímetro tendendo ao
+infinito e área tendendo a zero quando o número de iterações tende ao infinito
+\cite{Schroeder91}. 
 
 \figura{sections/sierpinski.png}{0.3}
 {Construção do triângulo de Sierpinski \cite{Schroeder91}.}
 {fig:constrsierpinski}
 
-O conceito de auto similaridade está relacionado com periodicidade. Muitos fenômenos naturais e humanos acontecem com periodicidade. São exemplos o uso do solo pela agricultura, o valor das moedas e das ações, o comportamento de redes de comunicação, as filas de caixa de supermercado, o uso das estradas, as músicas que tocam nas rádios e os efeitos da economia na vida das pessoas. Uma razão para a universalidade dessas movimentações harmônicas é a linearidade aproximada de muitos sistemas e a sua invariância com deslocamento no espaço e tempo. Experimentos realizados com alguns conjuntos de dados sintéticos e reais mostram que os dados referentes aos fenômenos humanos caracterizam-se por apresentarem uma distribuição fractal \cite{Traina2010}.
+O conceito de auto similaridade está relacionado com periodicidade. Muitos
+fenômenos naturais e humanos acontecem com periodicidade. São exemplos o uso do
+solo pela agricultura, o valor das moedas e das ações, o comportamento de redes
+de comunicação, as filas de caixa de supermercado, o uso das estradas, as
+músicas que tocam nas rádios e os efeitos da economia na vida das pessoas. Uma
+razão para a universalidade dessas movimentações harmônicas é a linearidade
+aproximada de muitos sistemas e a sua invariância com deslocamento no espaço e
+tempo. Experimentos realizados com alguns conjuntos de dados sintéticos e reais
+mostram que os dados referentes aos fenômenos humanos caracterizam-se por
+apresentarem uma distribuição fractal \cite{Traina2010}.
 
-Para a análise da auto similaridade de conjuntos contendo fenômenos naturais e humanos, chamados de fractais estatisticamente auto-similares, utiliza-se o método \textit{Box-Counting}. Para encontrar o \textit{Box-Counting} de um conjunto de dados imerso em um espaço $E$-dimensional, deve-se dividir esse espaço em células de um hipercubo de lado $r$, recursivamente, até encontrar um elemento por célula \cite{Traina2010}. O método foi proposto para cálculo da dimensão fractal, que corresponde ao número mínimo de dimensões para representação de um conjunto (dimensionalidade intrinseca). 
+Para a análise da auto similaridade de conjuntos contendo fenômenos naturais e
+humanos, chamados de fractais estatisticamente auto-similares, utiliza-se o
+método \textit{Box-Counting}. Para encontrar o \textit{Box-Counting} de um
+conjunto de dados imerso em um espaço $E$-dimensional, deve-se dividir esse
+espaço em células de um hipercubo de lado $r$, recursivamente, até encontrar um
+elemento por célula \cite{Traina2010}. O método foi proposto para cálculo da
+dimensão fractal, que corresponde ao número mínimo de dimensões para
+representação de um conjunto (dimensionalidade intrinseca). 
 
 Ainda preciso escrever sobre box plot com base em \cite{Traina2010}.
