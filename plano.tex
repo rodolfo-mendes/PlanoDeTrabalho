@@ -20,6 +20,18 @@
 
 \newcommand{\x}{\rule{10mm}{2mm}}
 
+% comando para inserir e formatar uma figura ao texto
+% sintaxe:  \figura{arquivo}{escala}{caption}{label}
+% exemplo:  \figura{logo.png}{0.5}{Simbolo do MySQL.}{fig:simbolomysql}
+\newcommand{\figura}[4] {
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=#2]{#1}
+        \caption{#3}
+        \label{#4}
+    \end{figure}
+}
+
 \sloppy
 
 

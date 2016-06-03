@@ -60,31 +60,31 @@ perder a qualidade dos agrupamentos resultantes.
 
 \subsection{Objetivos e Desafios de Pesquisa}
 
-O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o
-agrupamento hierárquico de séries espaço-temporais de imagens de satélite que
-permita reduzir significativamente a complexidade de tempo de execução e espaço
-do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos.
-Especificamente, deseja-se:
+O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o agrupamento hierárquico de séries espaço-temporais de imagens de satélite que permita reduzir significativamente a complexidade de tempo de execução e espaço do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos. Especificamente, deseja-se obter:
 
 \begin{enumerate}
-    \item Desenvolver uma abordagem para o agrupamento hierárquico aglomerativo
-		de séries espaço-temporais incluindo uma etapa de pré-processamento baseada
-		em redução de dados, especificamente por meio da geração de amostragens
-		aleatória uniforme 
+    \item Desenvolvimento de uma abordagem para o agrupamento hierárquico aglomerativo de séries espaço-temporais incluindo uma etapa de pré-processamento baseada em redução de dados;
+
+    \item Desenvolvimento de uma abordagem para a geração de amostras de séries espaço-temporais por meio da análise de auto-similaridade;	
     
-    \item Avaliar experimentalmente a nova abordagem em termos de tempo de
-		execução, consumo de memória e qualidade dos agrupamentos gerados visando o
-		agrupamento dos diversos tipos de vegetação para identificação de áreas de
-		plantio de culturas como a cana-de-açúcar
+    \item Avaliar experimentalmente as novas abordagens em termos de tempo de execução, consumo de memória e qualidade dos agrupamentos gerados visando o agrupamento dos diversos tipos de vegetação para identificação de áreas de plantio de culturas como a cana-de-açúcar.
 \end{enumerate}
 
+A etapa 1 encontra-se concluída e os resultados experimentais iniciais encontram-se descritos na Seção ???. A implementação da etapa 2 está em andamento espera-se concluí-la em .... 
+	
 \subsection{Hipótese}
 
-A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos
-dados de entrada permite executar o agrupamento hierárquico aglomerativo em
-tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
+A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos dados de entrada permite executar o agrupamento hierárquico aglomerativo em tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
+
+\subsubsection{Amostragem baseada em fractais}
+
+A hipótese de uso da teoria dos fractais para a geração de amostras significativas baseadas na análise da auto-similaridade vem do fato de que técnicas de amostragem ingênuas (\textit{naive}), como amostragens aleatórias e amostragens estratificadas, não são adequadas para conjuntos de dados reais com presença de dados ruidosos e de exceções, uma vez que o comportamento desses algoritmos é imprevisível.
+Como não há atributos de classe disponíveis, pretende-se fazer uma amostragem baseada na densidade da estrutura \textit{box count}. O objetivo é obter um conjunto mínimo de instâncias que represente as características do conjunto original.
+
+
 
 \subsection{Contribuição}
 
 A contribuição esperada é uma estratégia para o agrupamento hierárquico
 aglomerativo que produza respostas mais rápidas para o usuário.
+
