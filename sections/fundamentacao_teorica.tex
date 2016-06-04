@@ -149,9 +149,47 @@ explorada com mais detalhes.
 \subsection{Abordagem Hierárquica para Agrupamentos}
 	\label{subsec:abordagem_hierarquica}
 	
-Na abordagem hierárquica de agrupamento, os grupos são organizados em árvore,
-de forma as instâncias de dados são as folhas e a raiz é o grupo que representa
-o conjunto de dados completo.  
+Na abordagem hierárquica de agrupamento, os grupos são organizados em árvore, de
+forma que cada nodo desta árvore representa um grupo. Desta maneira,
+estabelece-se uma relação pai-filho entre os grupos, tal que, dado um grupo pai
+$C_p$ que tenha $n$ filhos $\{C_1, C_2,...,C_n\}$, então $C_i \subset C_p$ para
+todo $1 \leq i \leq n$, como mostra a Figura \ref{fig:cluster_hierarquico}(b).
+Nas folhas desta árvore, encontram-se as instâncias de dados, cada uma incluída
+em seu próprio grupo. Por sua vez, na raiz encontra-se o grupo que abrange todo
+o conjunto de dados. A Figura \ref{fig:cluster_hierarquico}(a) mostra a
+hierarquia entre os grupos através de um diagrama conhecido como
+\emph{dendrograma}.
+
+\figura{images/cluster_hierarquico.png}{1.0}
+{Exemplo de agrupamento hierárquico \cite{tan2009introducao}.}
+{fig:cluster_hierarquico}
+
+A organização de grupos em hierarquias tem aplicações em diversas áreas. Em 
+recuperação da informação por exemplo, documentos podem ser agrupados de maneira
+hierárquica de acordo com o assunto, revelando uma estrutura de tópicos e
+sub-tópicos. Em Biologia, o agrupamento de espécies de acordo com suas
+características pode ajudar na compreensão sobre como essas espécies evoluíram
+ao longo do tempo.
+
+Uma das principais vantagens da abordagem hierárquica de agrupamento é que não
+é necessário que o usuário informe o número $k$ de grupos desejado previamente.
+Porém, nem sempre é interessante para o usuário analisar todos os grupos obtidos
+pelo agrupamento hierárquico. Nestes casos, a hierarquia original pode ser
+convertida em um particionamento através do procedimento de poda
+(\emph{prunning}). 
+
+Nesta subseção serão discutidos os principais aspectos relativos ao agrupamento
+hierárquicos. Serão abordados: algoritmo AGNES para agrupamento aglomerativo, 
+algoritmo DIANA para agrupamento hierárquico divisivo e as principais medidas
+de distância entre clusters: single linkage, complete linkage, average linkage,
+mean distance e Ward's distance. Por fim serão analisados vantagens e
+desvantagens da abordagem hierárquica.
+
+\subsubsection{AGNES: algoritmo aglomerativo}
+
+\subsubsection{DIANA: algoritmo divisivo}
+
+\subsubsection{Medidas de distância entre grupos}
 
 % introduzir as tecnicas de agrupamento hierarquico: divisivo versus
 % aglomerativo
@@ -177,7 +215,7 @@ ser uma miniatura do triângulo em que está inserido, perímetro tendendo ao
 infinito e área tendendo a zero quando o número de iterações tende ao infinito
 \cite{Schroeder91}. 
 
-\figura{sections/sierpinski.png}{0.3}
+\figura{images/sierpinski.png}{0.3}
 {Construção do triângulo de Sierpinski \cite{Schroeder91}.}
 {fig:constrsierpinski}
 
