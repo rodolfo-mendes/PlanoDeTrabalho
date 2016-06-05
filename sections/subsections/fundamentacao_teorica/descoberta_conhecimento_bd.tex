@@ -1,0 +1,59 @@
+\subsection{Descoberta de Conhecimento em Bancos de Dados}
+	\label{subsec:descoberta_conhecimento_bd}
+
+A Descoberta de Conhecimento em Bancos de Dados, também conhecida pela sigla KDD 
+(\emph{Knowledge Discovery in Databases}) é o processo pelo qual dados brutos,
+coletados a partir das mais variadas fontes, são processados e transformados em
+informações úteis. Por sua vez, estas informações permitem o aprimoramento da
+tomada de decisão e até mesmo ampliação do conhecimento científico sobre um
+determinado fenômeno \cite{tan2009introducao}.
+
+O processo de KDD envolve desde a aquisição dos dados até a disponibilização do
+conhecimento para o usuário final. De acordo com \cite{tan2009introducao},
+este processo pode ser descrito pelas seguintes etapas:
+
+\begin{enumerate}
+    \item Pré-processamento
+    \item mineração de dados
+    \item Pós-processamento
+\end{enumerate}
+
+O objetivo da etapa de pré-processamento é preparar os dados que alimentarão a 
+etapa de mineração de dados. Nesta etapa, podem ser realizadas uma série de
+tarefas que visam aumentar a qualidade dos dados fornecidos à mineração de
+dados. Na tarefa de \emph{limpeza dos dados}, são tratados atributos sem valor
+definido e ruídos. A tarefa de \emph{integração de dados} consiste
+em consolidar fontes de dados de diversos tipos (arquivos de texto, planilhas,
+\emph{web-services}, arquivos XML, bancos de dados) em uma única fonte de dados
+consolidada, usualmente um \emph{data-warehouse}. A \emph{redução da
+dimensionalidade} consiste em diminuir o número de atributos que serão
+considerados na mineração de dados. Dentre as principais técnicas podemos citar
+PCA (\emph{Principal Component Analysis}) e DWT (\emph{Discrete Wavelets
+Transforms}). Por fim, a \emph{redução da numerosidade} busca representar o
+conjunto de dados através de um número reduzido de instâncias
+\cite{han2011data}.
+
+O reconhecimento de padrões é efetivamente realizado na etapa de mineração de
+dados. As tarefas desta etapa são categorizadas de acordo com o conhecimento que
+se deseja extrair da base de dados analisada. Na tarefa de mineração de itens
+frequentes, deseja-se extrair de um banco de transações quais itens ocorrem
+conjuntamente com maior frequência. Na tarefa de classificação, o objetivo é
+inferir um modelo a partir do qual seja possível prever à qual classe uma
+determinada instância de dados pertence. Por fim, na análise de agrupamentos
+deseja-se descobrir a existência de grupos (\emph{clusters}) de dados. Assim, é
+preciso que se estabeleça uma \emph{medida de similaridade} entre as instâncias
+do banco de dados, de forma que se maximize a similaridade entre instâncias do
+mesmo grupo e se minimize a similaridade entre instâncias de grupos diferentes.
+
+Por fim, na etapa de pós-processamento avalia-se se os padrões descobertos de
+fato representam um \emph{conhecimento} novo sobre os dados. Para cada tipo
+de padrão descoberto, pode-se estabelecer uma \emph{medida objetiva} sobre a
+qualidade do padrão \cite{han2011data}. No caso dos agrupamentos, por exemplo,
+a qualidade destes pode ser medida em termos de \emph{coesão} e \emph{separação}
+\cite{tan2009introducao}.
+
+Neste trabalho, será enfatizada a tarefa de agrupamento de dados, com atenção
+especial aos algoritmos hierárquicos de agrupamento. Também será discutido como
+as técnicas de redução de numerosidade influenciam o tempo de execução dos
+algoritmos hierárquicos e a qualidade dos agrupamentos produzidos, como etapa de
+pré-processamento.

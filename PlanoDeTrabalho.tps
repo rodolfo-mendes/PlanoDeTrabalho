@@ -18,7 +18,7 @@ Document=plano.tex
 
 [Frame0_View0,0]
 TopLine=55
-Cursor=1374
+Cursor=2013
 
 [Frame1]
 Flags=0
@@ -92,7 +92,43 @@ Document=sections\cronograma.tex
 TopLine=0
 Cursor=0
 
+[Frame5]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=32
+NormalPos.right=1562
+NormalPos.bottom=851
+Class=LaTeXView
+Document=sections\fundamentacao_teorica.tex
+
+[Frame5_View0,0]
+TopLine=0
+Cursor=417
+
+[Frame6]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=32
+NormalPos.right=1562
+NormalPos.bottom=851
+Class=LaTeXView
+Document=sections\subsections\fundamentacao_teorica\descoberta_conhecimento_bd.tex
+
+[Frame6_View0,0]
+TopLine=0
+Cursor=824
+
 [SessionInfo]
-FrameCount=5
-ActiveFrame=-1
+FrameCount=7
+ActiveFrame=6
 

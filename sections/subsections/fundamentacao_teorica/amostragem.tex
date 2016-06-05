@@ -1,0 +1,34 @@
+\subsection{Técnicas de Amostragem de dados}
+	\label{subsec:amostragem}
+	
+O objetivo das técnicas de amostragem de dados é reduzir o número de instâncias
+submetidas aos algoritmos de mineração de dados. Entre os desafios da amostragem
+de dados estão o balanceamento das instâncias com relação à ocorrência de
+instâncias raras ou de exceções. Conside um conjunto $T$ com cardinalidade
+$|T| = N$. Entre as técnicas propostas na literatura destacam-se
+\cite{Garcia2015}:
+
+\begin{itemize}
+    \item Amostragem aleatória de tamanho $s$ sem substituição: criada pela
+		escolha de $s$ instâncias de $T$ ($s < N$), onde a probabilidade de um
+		exemplo ser escolhido é de $1/N$, de modo que todas as instâncias têm a
+		mesma chance de serem escolhidas;
+    
+    \item Amostragem aleatória de tamanho $s$ com substituição: semelhante à
+		anterior, exceto pelo fato que a cada vez que uma instância é escolhida,
+		permanece no conjunto e pode ser escolhida novamente;
+    
+    \item Amostragem balanceada: criada levando-se em consideração um conjunto
+		de critérios pré-definidos, por exemplo, para manter a proporcionalidade
+		de instâncias entre classes conhecidas;
+    
+    \item Amostragem de agrupamentos: escolha de grupos específicos resultantes
+		de técnicas de agrupamento;
+    
+    \item Amostragem estratificada: obtida por meio da divisão de um conjunto
+		$T$ em partes mutualmente disjunta seguida da escolha de uma amostragem
+		aleatória em cada divisão.
+\end{itemize}
+
+% Descrever as técnicas correlatas:
+% Original Data Squashing (DS) e Likelihood-based Data Squashing (LDS).
