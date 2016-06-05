@@ -334,3 +334,52 @@ dimensão fractal, que corresponde ao número mínimo de dimensões para
 representação de um conjunto (dimensionalidade intrínseca). 
 
 Ainda preciso escrever sobre box plot com base em \cite{Traina2010}.
+
+\subsection{Séries Temporais}
+	\label{subsec:series_temporais}
+
+Uma série temporal é uma sequencia ordenada de valores coletados ao longo do
+tempo. Elas são usadas para medir fenômenos que variam com o tempo, e sua
+análise permite a construção de modelos que explicam estes fenômenos
+\cite{morettin2006analise}. São exemplos de séries temporais: o volume de
+poupança em um banco ao longo dos meses, a temperatura média de uma cidade
+durante a semana, ou ainda, o número de acessos a um website durante o dia.
+
+Uma série temporal pode ser representada por uma função Z(t), cujo domínio
+representa o tempo, e t, um determinado instante no tempo. Dada essa
+representação, uma série temporal pode ser classificada em discreta ou contínua,
+de acordo com o tipo de conjunto que representa o tempo
+\cite{morettin2006analise}. Por exemplo: o faturamento diário de um supermercado
+é uma série temporal discreta, pois o tempo é representado por um conjunto de
+intervalos enumeráveis, neste caso, dias. Por outro lado, a velocidade de um
+carro de corrida durante uma prova é um exemplo de série temporal contínua, pois
+a duração da corrida é um intervalo contínuo de tempo. Ainda, uma série temporal
+discreta pode ser obtida a partir de uma série contínua, bastando tomar amostras
+dos valores da série contínua em intervalos regulares de tempo.
+
+No entanto, há casos em que são necessárias mais de uma variável para
+representar o fenômeno medido pela série temporal. Por exemplo, o
+\emph{candlestick} diário de uma ação no mercado de capitais é formado por
+quatro valores: preço de abertura, preço mínimo, preço máximo e preço de
+fechamento. Nestes casos, a série temporal é classificada como multivariada, e é
+representada por uma função vetorial
+$Z\left(t\right) =
+	\left[
+		Z_1\left(t\right),
+		Z_2\left(t\right),
+		...
+		Z_r\left(t\right)
+	\right]$,
+onde r é o número de variáveis que descrevem o fenômeno. Caso $\left(Z_t\right)$
+seja um escalar, a série temporal é classificada como univariada
+\cite{morettin2006analise}.
+
+No contexto da mineração de dados, as séries temporais são definidas de maneira
+discreta e univariada:
+
+\begin{definition}
+	Uma série temporal de dimensão n é uma tupla ordenada
+	$S = \left(t_1, t_2, ..., t_n\right)$
+	tal que, $t_i \in \mathbb{R}$ é o valor observado no instante
+	$i = 1, 2, ..., n$ \cite{Esling2012}.
+\end{definition}
