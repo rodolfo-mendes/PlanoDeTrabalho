@@ -1,2 +1,51 @@
 \subsubsection{DIANA: algoritmo divisivo}
 	\label{subsec:diana}
+
+O algoritmo DIANA (DIvisive ANAlysis) é uma abordagem divisiva para o
+agrupamento hierárquico \cite{kaufman1990finding}. Ao contrário da abordagem
+aglomerativa, na abordagem divisiva o conjunto de dados é tomado como o grupo
+inicial do agrupamento. Então, este grupo inicial é sucessivamente dividido em
+grupos menores, até que cada instância de dados esteja em seu próprio grupo.
+
+Devido aos desafios que a abordagem divisiva impõe, esta é pouco estudada na
+literatura. Um dos principais problemas encontrados na abordagem divisiva é
+justamente a divisão do grupo inicial. Na abordagem aglomerativa, todas as
+possíveis fusões são consideradas no passo inicial, dado que, para um conjunto
+de dados com $n$ objetos, existem $C_{n}^{2}$ pares possíveis, como mostra a
+equação \ref{eq:agglomerative_combinations}:
+
+\begin{equation}
+	C_n^2 = \frac{n \left(n-1\right)}{2}
+	\label{eq:agglomerative_combinations}
+\end{equation}
+
+Porém, para a abordagem divisiva enumerar todas as possíveis divisões de $n$
+objetos em dois grupos não vazios, deverão ser consideradas $2^{n-1} - 1$
+possibilidades, tornando a análise impraticável até mesmo para pequenos valores
+de $n$.
+
+Dada a impossibilidade de se analisar todas as possíveis divisões do grupo
+inicial, o algoritmo DIANA utiliza uma heurística simples para dividir os
+grupos. Dado um grupo $C$ com $n$ objetos, calcula-se a dissimilaridade de cada
+objeto $x \in C$ através da distância média do objeto $x$ aos objetos restantes,
+como mostra a Equação \ref{eq:mean_distance}
+
+\begin{equation}
+	\mu_x = \frac{1}{n-1} \sum_{y \in C }{\left| x - y \right|}
+	\label{eq:mean_distance}
+\end{equation}
+
+Para cada grupo que será dividido, mede-se a dissimilaridade de cada
+objeto com relação ao resto do grupo. Então, o mais dissimilar é encontrado
+e colocado em um grupo separado (\emph{splinter group}). Novamente, as
+dissimilaridades são calculadas. Porém, também são calculadas as
+dissimilaridades entre os objetos restantes e os objetos do grupo separado. Caso
+algum objeto esteja mais próximo do grupo separado, este é transferido. Esse
+processo continua até que não haja mais transferências, e ao seu final, obtém-se
+a divisão em dois grupos.
+
+%Em seguida, para cada
+%objeto $x$ que restou no grupo original, são medidas: a distância média entre os
+%objetos restantes $\mu_{xi}$, e a distância média entre os objetos do grupo 
+%separado $\mu_{xj}$. Caso $\mu_{xi} - \mu_{xj} > 0$ então este objeto também é
+%transferido para o grupo separado. 
