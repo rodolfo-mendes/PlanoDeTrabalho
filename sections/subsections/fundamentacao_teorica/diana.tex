@@ -26,12 +26,12 @@ de $n$.
 
 Dada a impossibilidade de se analisar todas as possíveis divisões do grupo
 inicial, o algoritmo DIANA utiliza uma heurística simples para dividir os
-grupos. Dado um grupo $C$ com $n$ objetos, calcula-se a dissimilaridade de cada
-objeto $x \in C$ através da distância média do objeto $x$ aos objetos restantes,
-como mostra a Equação \ref{eq:mean_distance}
+grupos. Dado um grupo $C_i$ com $n$ objetos, calcula-se a dissimilaridade de
+cada objeto $x \in C_i$ através da distância média do objeto $x$ aos objetos
+restantes, como mostra a Equação \ref{eq:mean_distance}
 
 \begin{equation}
-	\mu_x = \frac{1}{n-1} \sum_{y \in C }{\left| x - y \right|}
+	\mu_{xi} = \frac{1}{n-1} \sum_{y \in C_i }{\left| x - y \right|}
 	\label{eq:mean_distance}
 \end{equation}
 
@@ -42,7 +42,66 @@ dissimilaridades são calculadas. Porém, também são calculadas as
 dissimilaridades entre os objetos restantes e os objetos do grupo separado. Caso
 algum objeto esteja mais próximo do grupo separado, este é transferido. Esse
 processo continua até que não haja mais transferências, e ao seu final, obtém-se
-a divisão em dois grupos.
+a divisão em dois grupos. A Função \ref{func:divide} mostra este procedimento.
+
+\begin{function}[htbp]
+
+	$ C_j \gets
+		\left\{
+			x \in C_{ij} \mid 
+			\mu_{xij} > \mu_{yij},
+			\forall y \neq x
+		\right\}
+	$ \;
+	
+	$C_i \gets C_{ij} \setminus C_j $ \;
+	
+	transferiu $\gets$ \textbf{true}\;
+	
+	\Enqto{$transferiu = \textbf{true}$}{
+		transferiu $\gets$ \textbf{false} \;
+		
+		\ParaCada{$x \in C_i$}{
+			recalcula $\mu_{xi}$ \;
+			recalcula $\mu_{xj}$ \;
+		}
+		
+		$ x \gets x \in C_{i} \mid \mu_{xi} > \mu_{yi}, \forall y \neq x$ \;
+		
+		\Se{$\mu_{xi} > \mu_{xj}$}{
+			$C_j \gets C_j \cup \left\{x\right\}$ \;
+			$C_i \gets C_i \setminus \left\{x\right\}$ \;
+			transferiu $\gets$ \textbf{true} \;
+		}
+	}
+	
+	\Retorna{$\left\{C_i,C_j\right\}$}
+		
+	
+	\caption{Divide($C_{ij}$: grupo a ser dividido)}
+	\label{func:divide}
+\end{function}
+
+O processo continua até que todos os grupos contenham apenas um único objeto 
+de dados. O Algoritmo \ref{alg:diana} mostra esse procedimento.
+
+\begin{algorithm}[htbp]
+	\Entrada{conjunto de dados D}
+	\Saida{agrupamento hierárquico}
+	
+	$\mathcal{C} \gets \left\{ D \right\}$
+	
+	\Repita{$\left|C\right| = 1, \forall C \in \mathcal{C} $}{
+		\ParaCada{$C \in \mathcal{C} \mid \left|C\right| > 1$}{
+			$\mathcal{C} \gets \mathcal{C} \cup Divide\left(C\right)$ \;
+			$\mathcal{C} \gets \mathcal{C} \setminus \left\{C\right\}$
+		}
+	}
+	
+	\caption{DIANA}
+	\label{alg:diana}
+\end{algorithm}
+
 
 %Em seguida, para cada
 %objeto $x$ que restou no grupo original, são medidas: a distância média entre os

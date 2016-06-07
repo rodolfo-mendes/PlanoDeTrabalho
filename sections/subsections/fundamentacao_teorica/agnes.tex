@@ -12,23 +12,23 @@ objetos sejam aglomerados em um único grupo, como mostra o Algoritmo
 	\Entrada{conjunto de dados $X$}
 	\Saida{agrupamento hierárquico}
 	
-	$n \leftarrow \left|X\right|$ \;
+	$n \gets \left|X\right|$ \;
 			
-	$\mathcal{C} \leftarrow \left\{ C_i = \left\{x_i\right\} | 
+	$\mathcal{C} \gets \left\{ C_i = \left\{x_i\right\} | 
 		x_i \in X \right\} $ \;
 		
-	$M \leftarrow \left(m_{ij}\right)_{n \times n}\ |\ m_{ij} = 
+	$M \gets \left(m_{ij}\right)_{n \times n}\ |\ m_{ij} = 
 		dist\left(C_i,C_j\right), C_i, C_j \in \mathcal{C}$ \;
 	
 	\Repita{$C \equiv X$}{
 		encontra o par de grupos mais próximos $C_i$ e $C_j$ \;
-		$C \leftarrow C_i \cup C_j$ \;
-		$\mathcal{C} \leftarrow \left( \mathcal{C} \setminus \left\{C_i,C_j\right\}
+		$C \gets C_i \cup C_j$ \;
+		$\mathcal{C} \gets \left( \mathcal{C} \setminus \left\{C_i,C_j\right\}
 			\right) \cup \left\{C\right\}$ \;
 		recalcula $M$ \;
 	}
 	
-	\caption{Algoritmo aglomerativo para agrupamento hierárquico}
+	\caption{AGNES}
 	\label{alg:agnes}
 \end{algorithm}
 
