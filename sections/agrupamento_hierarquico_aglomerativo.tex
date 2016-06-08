@@ -1,3 +1,38 @@
 \section{Agrupamento hierárquico aglomerativo de séries espaço-temporais}
 
-descrever a tecnica proposta!!!
+Nesta seção, será descrita a técnica proposta para agrupamento hierárquico de
+séries-temporais. Basicamente, está técnica consiste em reduzir o tamanho do
+conjunto de dados através de técnicas de amostragem, aplicar o agrupamento
+aglomerativo, e finalmente, atribuir as instâncias restantes aos seus grupos
+mais próximos, como mostra o Algoritmo \ref{alg:proposta}.
+
+\begin{algorithm}
+	\Entrada{Conjundo de dados $D$, número de grupos $K$}
+	\Saida{Agrupamento $\mathcal{C}$}
+	1. Selecionar amostra $\mathcal{D}$,
+		tal que $\left|\mathcal{D}\right| < \left|D\right|$ \;
+		
+	2. Obter o agrupamento hierárquico
+		$\mathcal{H} \gets AGNES\left(\mathcal{D}\right)$ \;
+		
+	3. Aplicar o procedimento de poda em $\mathcal{H}$, obtendo
+		o agrupamento $\mathcal{C}_0$, com $K$ grupos \;
+		
+	4. Atribuir os objetos restantes em $D \setminus \mathcal{D}$
+		aos grupos em $\mathcal{C}_0$, obtendo o agrupamento final $\mathcal{C}$ \;
+	
+	\caption{Agrupamento Hierárquico Aglomerativo com Amostragem}
+	\label{alg:proposta}
+\end{algorithm}
+
+A redução de dados tem papel fundamental na obtenção da escalabilidade dos
+algoritmos de agrupamento. Assim, o verdadeiro desafio na aplicação das técnicas
+de redução de dados é manter as características do conjunto de dados original,
+para que seja possível descobrir a estrutura dos grupos presentes.
+
+A redução do tamanho do conjunto de dados através de amostragem aleatória é uma
+técnica utilizada em vários algoritmos de agrupamento, entre eles CURE
+\cite{guha1998cure}, CLARA \cite{kaufman1990finding} e YADING \cite{Ding2015}.
+Por outro lado, a análise de fractais mostrou-se uma técnica promissora na 
+redução da dimensionalidade dos dados. No entanto, não foram encontrados até o
+momento trabalhos que tenham aplicado técnicas de análise de fractais.
