@@ -1,4 +1,5 @@
 \section{Agrupamento hierárquico aglomerativo de séries espaço-temporais}
+	\label{sec:agrupamento_hierarquico}
 
 Nesta seção, será descrita a técnica proposta para agrupamento hierárquico de
 séries-temporais. Basicamente, está técnica consiste em reduzir o tamanho do
@@ -7,7 +8,7 @@ aglomerativo, e finalmente, atribuir as instâncias restantes aos seus grupos
 mais próximos, como mostra o Algoritmo \ref{alg:proposta}.
 
 \begin{algorithm}
-	\Entrada{Conjundo de dados $D$, número de grupos $K$}
+	\Entrada{Conjunto de dados $D$, número de grupos $K$}
 	\Saida{Agrupamento $\mathcal{C}$}
 	1. Selecionar amostra $\mathcal{D}$,
 		tal que $\left|\mathcal{D}\right| < \left|D\right|$ \;
@@ -34,5 +35,6 @@ A redução do tamanho do conjunto de dados através de amostragem aleatória é
 técnica utilizada em vários algoritmos de agrupamento, entre eles CURE
 \cite{guha1998cure}, CLARA \cite{kaufman1990finding} e YADING \cite{Ding2015}.
 Por outro lado, a análise de fractais mostrou-se uma técnica promissora na 
-redução da dimensionalidade dos dados. No entanto, não foram encontrados até o
-momento trabalhos que tenham aplicado técnicas de análise de fractais.
+redução da dimensionalidade dos dados. No entanto, até o momento, não foram
+encontrados trabalhos que tenham aplicado técnicas de análise de fractais à
+redução de conjuntos de dados espaço-temporais.

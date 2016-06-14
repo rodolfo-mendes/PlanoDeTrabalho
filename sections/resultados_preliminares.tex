@@ -1,3 +1,122 @@
 \section{Resultados Preliminares}
+	\label{sec:resultados_preliminares}
 
-descrever os resultados preliminares!!!
+Nesta seção, será descrito o experimento preliminar cujo intuito foi comparar
+o agrupamento hierárquico por amostragem, proposto na seção
+\ref{sec:agrupamento_hierarquico}, e o algoritmo AGNES, que constrói o
+agrupamento hierárquico aglomerativo com todo o conjunto de dados.
+
+O conjunto de dados utilizado nos testes são valores de índice NDVI
+(\emph{Normalized Difference Vegetation Index}) de uma área localizada entre
+as latitudes $-8,55$ e $-8,45$, e as longitudes $-38,25$ e $37,25$, que 
+corresponde a uma região do estado de Pernambuco, Brasil. Estes dados foram
+extraídos a partir de imagens coletadas por um satélite MODIS
+(\emph{Moderate Resolution Imaging Spetroradiometer}) durante o ano de 2003,
+em períodos de 16 dias. Assim, a cada \emph{pixel} da imagem é associada uma
+série temporal composta pelos valores do índice NDVI coletados ao longo do ano.
+O conjunto de dados utilizado possui um total de $9812$ séries temporais, cada
+uma $23$ coletas do índice NDVI. A tabela \ref{tab:amostra_dados} mostra um
+subconjunto destes dados.
+
+\input{tabelas/amostraDados.tex}
+
+O experimento consistiu em comparar o algoritmo hierárquico aglomerativo por
+amostragem com o algoritmo AGNES, ambos utilizando a ligação simples
+(\emph{single linkage}) como medida de distância entre grupos. Os algoritmos
+foram comparados em relação ao seu tempo de execução e à qualidade dos
+agrupamentos gerados. Para medir a qualidade dos agrupamentos, utilizou-se
+o índice Dunn e o índice Davies-Bouldin.
+
+Para cada um dos algoritmos comparados, foi realizada a poda da hierarquia
+gerada em grupos $k = 3,5,7$. Por ser determinístico, o algoritmo AGNES foi
+executado uma única vez para cada valor de $k$. Já o algoritmo por amostragem
+foi executado com amostras de tamanho $m = 10,100,1000$. Por sua natureza 
+probabilística, o algoritmo por amostragem foi executado $10$ vezes para cada
+combinação de $m$ e $k$, e foram calculadas as médias do tempo de execução
+e das métricas de qualidade dos agrupamentos. 
+
+Na tabela \ref{tab:tempo_execucao}, são mostrados as médias do tempo de execução
+obtidos para cada tamanho de amostra (a amostra de tamanho 9812 corresponde
+à execução do algoritmo AGNES).
+
+\input{tabelas/tempoExecucao.tex}
+
+Embora o algoritmo baseado em amostragem precise, ao final do algoritmo,
+atribuir as instâncias restantes ao grupo mais próximo, o tempo de execução 
+dessa etapa é da ordem de $O\left(nm\right)$, ou seja, linear em relação ao 
+tamanho $n$ do conjunto de dados. Assim, diminuir o número de instâncias
+processadas pelo algoritmo aglomerativo representou uma diminuição significativa
+no tempo de execução do agrupamento, como esperado. O gráfico da Figura 
+\ref{fig:tempo_execucao} mostra a comparação dos tempos de execução em escala
+logarítmica.
+
+\figura{images/executionTime.pdf}{0.6}
+{Tempo de execução por tamanho de amostra}
+{fig:tempo_execucao}
+
+Para comparar a qualidade dos agrupamentos produzidos foram utilizados os
+índices Dunn e Davies-Boulding. Além do tamanho da amostragem, também foi
+testado se o número de grupos utilizados na poda influenciaria a qualidade dos
+agrupamentos produzidos. Os resultados obtidos para o índice Dunn são mostrados
+na tabela \ref{tab:indice_dunn}.
+
+\input{tabelas/indiceDunn.tex}
+
+O índice Dunn é obtido pela razão entre a menor distância entre pares de grupos
+diferentes e a maior distância entre pares de um mesmo grupo. Assim, para
+agrupamentos de maior qualidade, o valor desse índice é maior. Como pode ser 
+observado no gráfico da Figura \ref{fig:indice_dunn}, o número de grupos
+utilizado na poda influenciou pouco a qualidade dos agrupamentos obtidos. Por
+sua vez, o fator determinante na qualidade foi o tamanho da amostra utilizada
+nos algoritmos.
+
+\figura{images/indiceDunn.pdf}{0.6}
+{Índice Dunn por tamanho da amostra e número de grupos}
+{fig:indice_dunn}
+
+Houve grande diferença entre a qualidade dos agrupamentos produzidos pelo
+algoritmo AGNES e os agrupamentos produzidos pelo algoritmo baseado em
+amostragem. Dado que o índice Dunn é influenciado pela menor distância entre
+pares de grupos diferentes, esse desempenho pode ser explicado pelo fato do 
+algoritmo AGNES garantir que os pares de objetos mais próximos serão colocados 
+no mesmo grupo. Por outro lado, no algoritmo baseado em amostragem, existe a
+possibilidade de que objetos muito próximos sejam colocados em grupos separados,
+afetando negativamente seu desempenho.
+
+A qualidade inferior dos agrupamentos produzidos pelo algoritmo baseado em 
+amostragem também foi refletida no índice Davies-Boulding. Este índice é obtido
+para cada par de grupos como a relação entre a soma dos desvios-padrão e a 
+distância entre as médias dos grupos. Assim, quanto maior a qualidade dos 
+agrupamentos, menor será o valor desse índice, pois menor será a dispersão
+dentro de um grupo e maior será a distância entre seus centros. 
+
+\input{tabelas/indiceDb.tex}
+
+Os dados mostrados na Tabela \ref{tab:indice_db} também indicam que a qualidade
+dos agrupamentos produzidos pelo algoritmo baseado em amostragem foi inferior.
+Isso também pode ser explicado pela garantia que o algoritmo AGNES oferece 
+de agrupar os pares mais próximos já no primeiro passo do algoritmo, pois 
+diminui a dispersão dos dados. O gráfico da Figura
+\ref{fig:indice_davies_bouldin} mostra que, com relação ao índice Dunn, este
+índice sofreu maior variação de acordo com o número de grupos e o tamanho das
+amostras. 
+
+\figura{images/indiceDaviesBouldin.pdf}{0.6}
+{Índice Davies-Bouldin por K e tamanho de amostra}
+{fig:indice_davies_bouldin}
+
+\subsection{Conclusões Preliminares}
+	\label{subsec:conclusoes_preliminares}
+	
+Através deste experimento, confirmou-se que o algoritmo proposto na Seção
+\ref{sec:agrupamento_hierarquico} permite que o agrupamento hierárquico
+aglomerativo seja executado em tempo muito menor que o algoritmo original.
+Porém, a amostragem aleatória impactou negativamente na qualidade dos
+agrupamentos obtidos.
+
+No entanto, ainda não é possível descartar a utilização das técnicas de redução
+de dados para obter melhor desempenho do agrupamento hierárquico aglomerativo.
+Ao longo do trabalho proposto, pretende-se ampliar o escopo dos experimentos,
+averiguando o comportamento de outras medidas de distância, variar o tamanho
+das amostras e o número de grupos, assim como implementar novos métodos de 
+redução de dados. 

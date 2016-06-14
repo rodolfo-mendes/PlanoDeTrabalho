@@ -43,7 +43,7 @@ ser convertido em uma partição de $k$ grupos por meio de uma poda na árvore
 resultante. Por sua vez, as partições resultantes deste processo não estão
 limitadas a formatos esféricos, sendo o algoritmo capaz de detectar agrupamento
 com formatos arbitrários. Apesar dessas vantagens, os algoritmos hierárquicos
-tem alto custo computacional, de ordem $O(n^2)$ (quadrática) ou $O(n^3)$
+tem alto custo computacional, de ordem $O(n^2)$ (quadrática) até $O(n^3)$
 (cúbica) para tempo e espaço, tornando sua aplicação impraticável para grandes
 conjuntos de dados como séries temporais de imagens de satélites de alta
 resolução.
@@ -52,38 +52,76 @@ Neste trabalho, propomos uma nova abordagem para que se possa aproveitar
 as vantagens dos algoritmos hierárquicos mesmo em grandes conjuntos de dados.
 Esta abordagem consiste em, inicialmente, reduzir o conjunto de dados, e em
 seguida, aplicar o agrupamento hierárquico neste conjunto de dados reduzido. Por
-fim, as instâncias restantes são atribuídas ao seu vizinho mais próximo (1-NN)
-completando o agrupamento. Espera-se que, com esta abordagem, seja possível
-aplicar o agrupamento hierárquico em tempo consideravelmente menor, mas sem
-perder a qualidade dos agrupamentos resultantes.
+fim, as instâncias restantes são aglomeradas ao grupo mais próximo, utilizando a
+mesma medida de distância entre grupos utilizada no agrupamento inicial.
+Espera-se que, com esta abordagem, seja possível aplicar o agrupamento
+hierárquico em tempo consideravelmente menor, mas que a perda de qualidade dos
+agrupamentos resultantes seja mínima.
 
+Esta proposta de trabalho está dividida da seguinte forma: na Subseção
+\ref{subsec:objetivos} estão listados o objetivo geral da pesquisa e os
+objetivos mais específicos. Na Subseção \ref{subsec:hipotese} encontra-se a 
+formulação da hipótese a ser averiguada durante o trabalho e na Subseção
+\ref{subsec:contribuicao} destaca-se a contribuição do trabalho. Na Seção
+\ref{sec:fundamentacao_teorica}, são apresentados os principais conceitos
+teóricos necessários para o desenvolvimento e entendimento do trabalho. Na Seção
+\ref{sec:agrupamento_hierarquico} é apresentada a proposta de algoritmo
+hierárquico aglomerativo baseada em redução de dados. Na Seção
+\ref{sec:resultados_preliminares} são apresentados os resultados preliminares
+obtidos ao aplicar a técnica proposta. Na Seção \ref{sec:metodologia},
+descreve-se a metodologia que será utilizada para o prosseguimento do trabalho.
+Por fim, na Seção \ref{sec:cronograma} é apresentado o cronograma para a
+execução do restante da pesquisa.
 
 \subsection{Objetivos e Desafios de Pesquisa}
+	\label{subsec:objetivos}
 
-O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o agrupamento hierárquico de séries espaço-temporais de imagens de satélite que permita reduzir significativamente a complexidade de tempo de execução e espaço do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos. Especificamente, deseja-se obter:
+O objetivo geral deste trabalho é desenvolver uma abordagem escalável para o
+agrupamento hierárquico de séries espaço-temporais de imagens de satélite que
+permita reduzir significativamente a complexidade de tempo de execução e espaço
+do algoritmo, sem no entanto reduzir a qualidade dos agrupamentos produzidos.
+Especificamente, deseja-se obter:
 
 \begin{enumerate}
-    \item Desenvolvimento de uma abordagem para o agrupamento hierárquico aglomerativo de séries espaço-temporais incluindo uma etapa de pré-processamento baseada em redução de dados;
+    \item Desenvolvimento de uma abordagem para o agrupamento hierárquico
+		aglomerativo de séries espaço-temporais incluindo uma etapa de
+		pré-processamento baseada em redução de dados;
 
-    \item Desenvolvimento de uma abordagem para a geração de amostras de séries espaço-temporais por meio da análise de auto-similaridade;	
+    \item Desenvolvimento de uma abordagem para a geração de amostras de séries
+		espaço-temporais por meio da análise de auto-similaridade;	
     
-    \item Avaliar experimentalmente as novas abordagens em termos de tempo de execução, consumo de memória e qualidade dos agrupamentos gerados visando o agrupamento dos diversos tipos de vegetação para identificação de áreas de plantio de culturas como a cana-de-açúcar.
+    \item Avaliar experimentalmente as novas abordagens em termos de tempo de
+		execução, consumo de memória e qualidade dos agrupamentos gerados visando o
+		agrupamento dos diversos tipos de vegetação para identificação de áreas de
+		plantio de culturas como a cana-de-açúcar.
 \end{enumerate}
 
-A etapa 1 encontra-se concluída e os resultados experimentais iniciais encontram-se descritos na Seção ???. A implementação da etapa 2 está em andamento espera-se concluí-la em .... 
+A etapa 1 encontra-se concluída e os resultados experimentais iniciais
+encontram-se descritos na Seção \ref{sec:resultados_preliminares}. A
+implementação da etapa 2 está em andamento espera-se concluí-la em .... 
 	
 \subsection{Hipótese}
+	\label{subsec:hipotese}
 
-A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos dados de entrada permite executar o agrupamento hierárquico aglomerativo em tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
+A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos
+dados de entrada permite executar o agrupamento hierárquico aglomerativo em
+tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
 
 \subsubsection{Amostragem baseada em fractais}
 
-A hipótese de uso da teoria dos fractais para a geração de amostras significativas baseadas na análise da auto-similaridade vem do fato de que técnicas de amostragem ingênuas (\textit{naive}), como amostragens aleatórias e amostragens estratificadas, não são adequadas para conjuntos de dados reais com presença de dados ruidosos e de exceções, uma vez que o comportamento desses algoritmos é imprevisível.
-Como não há atributos de classe disponíveis, pretende-se fazer uma amostragem baseada na densidade da estrutura \textit{box count}. O objetivo é obter um conjunto mínimo de instâncias que represente as características do conjunto original.
-
-
+A hipótese de uso da teoria dos fractais para a geração de amostras
+significativas baseadas na análise da auto-similaridade vem do fato de que
+técnicas de amostragem ingênuas (\textit{naive}), como amostragens aleatórias e
+amostragens estratificadas, não são adequadas para conjuntos de dados reais com
+presença de dados ruidosos e de exceções, uma vez que o comportamento desses
+algoritmos é imprevisível.
+Como não há atributos de classe disponíveis, pretende-se fazer uma amostragem
+baseada na densidade da estrutura \textit{box count}. O objetivo é obter um
+conjunto mínimo de instâncias que represente as características do conjunto
+original.
 
 \subsection{Contribuição}
+	\label{subsec:contribuicao}
 
 A contribuição esperada é uma estratégia para o agrupamento hierárquico
 aglomerativo que produza respostas mais rápidas para o usuário.
