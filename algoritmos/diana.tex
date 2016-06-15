@@ -1,0 +1,16 @@
+\begin{algorithm}[htbp]
+	\Entrada{conjunto de dados D}
+	\Saida{agrupamento hierárquico}
+	
+	$\mathcal{C} \gets \left\{ D \right\}$
+	
+	\Repita{$\left|C\right| = 1, \forall C \in \mathcal{C} $}{
+		\ParaCada{$C \in \mathcal{C} \mid \left|C\right| > 1$}{
+			$\mathcal{C} \gets \mathcal{C} \cup Divide\left(C\right)$ \;
+			$\mathcal{C} \gets \mathcal{C} \setminus \left\{C\right\}$
+		}
+	}
+	
+	\caption{DIANA}
+	\label{alg:diana}
+\end{algorithm}

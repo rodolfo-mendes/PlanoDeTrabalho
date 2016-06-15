@@ -6,6 +6,9 @@ agrupamento hierárquico \cite{kaufman1990finding}. Ao contrário da abordagem
 aglomerativa, na abordagem divisiva o conjunto de dados é tomado como o grupo
 inicial do agrupamento. Então, este grupo inicial é sucessivamente dividido em
 grupos menores, até que cada instância de dados esteja em seu próprio grupo.
+O algoritmo \ref{alg:diana} mostra este procedimento.
+
+\input{algoritmos/diana.tex}
 
 Devido aos desafios que a abordagem divisiva impõe, esta é pouco estudada na
 literatura. Um dos principais problemas encontrados na abordagem divisiva é
@@ -81,30 +84,3 @@ a divisão em dois grupos. A Função \ref{func:divide} apresenta este procedime
 	\caption{Divide($C_{ij}$: grupo a ser dividido)}
 	\label{func:divide}
 \end{function}
-
-O processo continua até que todos os grupos contenham apenas um único objeto 
-de dados. O Algoritmo \ref{alg:diana} apresenta esse procedimento.
-
-\begin{algorithm}[htbp]
-	\Entrada{conjunto de dados D}
-	\Saida{agrupamento hierárquico}
-	
-	$\mathcal{C} \gets \left\{ D \right\}$
-	
-	\Repita{$\left|C\right| = 1, \forall C \in \mathcal{C} $}{
-		\ParaCada{$C \in \mathcal{C} \mid \left|C\right| > 1$}{
-			$\mathcal{C} \gets \mathcal{C} \cup Divide\left(C\right)$ \;
-			$\mathcal{C} \gets \mathcal{C} \setminus \left\{C\right\}$
-		}
-	}
-	
-	\caption{DIANA}
-	\label{alg:diana}
-\end{algorithm}
-
-
-%Em seguida, para cada
-%objeto $x$ que restou no grupo original, são medidas: a distância média entre os
-%objetos restantes $\mu_{xi}$, e a distância média entre os objetos do grupo 
-%separado $\mu_{xj}$. Caso $\mu_{xi} - \mu_{xj} > 0$ então este objeto também é
-%transferido para o grupo separado. 

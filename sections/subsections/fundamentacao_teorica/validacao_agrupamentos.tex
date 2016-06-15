@@ -1,0 +1,124 @@
+\subsection{Validação de Agrupamentos}
+	\label{subsec:validacao_agrupamentos}
+	
+A validação de agrupamentos é uma tarefa de pós-processamento da descoberta de
+conhecimento em bancos de dados. Dadas as diferentes abordagens para se produzir
+agrupamentos, e a variabilidade dos parâmetros necessários a esses algoritmos,
+surge a necessidade de se estabelecer critérios objetivos para avaliar e 
+comparar os resultados dos algoritmos de agrupamento. Existem diversas métricas
+propostas na literatura para validar a qualidade de agrupamentos. Elas são 
+dividas basicamente em dois grupos:
+
+\begin{itemize}
+	\item \textbf{Externas}: o agrupamento é avaliado segundo critérios externos
+	ao agrupamento. Um exemplo seria o conhecimento prévio sobre a categoria de
+	cada uma das instâncias do conjunto de dados;
+	
+	\item \textbf{Internas}: neste caso, o agrupamento é avaliado a partir de 
+	características inerentes ao próprio agrupamento resultante. Duas medidas 
+	bastante comuns são a coesão e a separação dos agrupamentos. 
+\end{itemize}
+
+Nas próximas sessões, serão apresentadas as principais métricas que poderão
+ser utilizadas neste trabalho de pesquisa.
+
+\subsubsection{Pureza}
+	\label{subsubsec:pureza}
+
+A pureza é uma medição externa da qualidade de um agrupamento. Para medi-la, é
+necessário que a cada objeto do conjunto de dados esteja associada uma
+categoria. A pureza mede a uniformidade dos grupos obtidos. Quanto menor o
+número de categorias presentes uma cada grupo, maior será a pureza do
+agrupamento. Para um determinado grupo $C_i$, a sua pureza é calculada pela
+Equação \ref{eq:pureza_grupo}:
+
+\begin{equation}
+	pureza_i = \frac{1}{n_i} \max_{j = 1}^{k}{\left\{n_{ij}\right\}},
+	\label{eq:pureza_grupo}
+\end{equation}
+
+\noindent onde $n_i$ é o número de objetos no grupo $C_i$ e $n_{ij}$ é o número
+de objetos pertencentes à categoria $j$ que estão presentes no grupo $C_i$. Por
+sua vez, a pureza do agrupamento é obtida pela média ponderada das purezas de 
+cada um dos $r$ grupos, como mostra a Equação \ref{eq:pureza_agrupamento}.
+
+\begin{equation}
+	pureza = \sum_{i=1}^{r}{\frac{n_i}{n} pureza_i}
+	\label{eq:pureza_agrupamento}
+\end{equation}
+
+A pureza de um agrupamento pode assumir valores entre $0$ e $1$, sendo que o
+valor $1$ indica o grau máximo de pureza para um agrupamento. Destaca-se o fato
+de que é possível um agrupamento obter $pureza = 1$ mesmo quando o número de 
+grupos é maior que o número de categorias. Nesse caso, os grupos são
+subconjuntos de cada categoria.
+
+\subsubsection{Índice Dunn}
+	\label{subsubsec:indice_dunn}
+	
+O índice Dunn é uma medida interna da qualidade de um agrupamento. Ele mede a 
+qualidade do agrupamento como a razão entre a separação entre os grupos e a
+coesão dos objetos de um mesmo grupo. Seu valor pode variar entre $0$ e
+$+\infty$, de forma que quanto maior o valor do índice Dunn, melhor será a
+qualidade do agrupamento.
+
+Este índice é baseado em uma visão de grafos dos agrupamentos. A separação entre
+os grupos é representada pela menor distância entre objetos de grupos
+diferentes, enquanto que a coesão é medida pelo maior diâmetro de um grupo, como
+é mostrado pelas respectivas distâncias $A$ e $B$ na Figura
+\ref{fig:distancias_dunn}.
+
+\figura{images/ilustrationDunn.pdf}{0.6}
+{Separação e coesão de grupos no cálculo do índice Dunn.}
+{fig:distancias_dunn}
+
+\subsubsection{Índice Davies-Boulding}
+	\label{subsubsec:indice_davies_boulding}
+	
+O índice Davies-Boulding é também uma medida interna da qualidade de um
+agrupamento. Assim como o índice Dunn, o índice Davies-Boulding reúne em uma
+grandeza escalar tanto a coesão quanto a separação de um agrupamento. No
+entanto, este índice é baseado em uma representação de protótipos dos
+agrupamentos.
+
+Seja $\mu_i$ o centroide de um grupo, denotado pela Equação \ref{eq:centroid}. 
+O desvio-padrão desse grupo é obtido pela Equação \ref{eq:std_deviation}.
+
+\begin{equation}
+	\sigma_i = \sqrt{
+								\frac
+									{
+										\sum_{x \in C_i}{ \left( \left| x - \mu_i \right| \right)^2}
+									}
+									{n_i}
+							}
+	\label{eq:std_deviation}
+\end{equation}
+
+Dado um par de grupos $C_i$ e $C_j$, o valor do índice Davies-Bouldin para estes
+grupos é dado pela Equação \ref{eq:indice_db_par}.
+
+\begin{equation}
+	DB_{ij} = \frac{\sigma_i + \sigma_j}{\left| \mu_i - \mu_j \right|}
+	\label{eq:indice_db_par}
+\end{equation}
+
+Por fim, o valor do índice Davies-Boulding para o agrupamento todo é o valor 
+máximo do índice entre os pares normalizado pelo número $k$ de grupos, como
+mostra a Equação \ref{eq:indice_db_total}.
+
+\begin{equation}
+	DB = \frac{1}{k}
+			 \sum_{i = 1}^{k}
+			 {
+					\max_{i \neq j}{\left\{ DB_{ij} \right\}}
+			}
+	\label{eq:indice_db_total}
+\end{equation}
+ 
+
+Assim, dada a representação baseada em protótipos do índice Davies-Boulding,
+observa-se que a separação entre dois grupos é dada pela distância entre seus
+centróides, enquanto que a coesão dos grupos é representada pela soma de seus
+respectivos desvios-padrão. Assim, quanto menor o valor do índice
+Davies-Boulding para um par de grupos, melhor será a qualidade do agrupamento.

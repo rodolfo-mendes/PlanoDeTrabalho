@@ -34,7 +34,21 @@ para que seja possível descobrir a estrutura dos grupos presentes.
 A redução do tamanho do conjunto de dados por meio de amostragem aleatória é uma
 técnica utilizada em vários algoritmos de agrupamento, entre eles CURE
 \cite{guha1998cure}, CLARA \cite{kaufman1990finding} e YADING \cite{Ding2015}.
-Em vários trabalhos da literatura científica da área a análise de fractais mostrou-se uma técnica promissora na 
-redução da dimensionalidade dos dados. No entanto, até o momento, não foram
-encontrados trabalhos que tenham aplicado técnicas de análise de fractais à
-redução de conjuntos de dados espaço-temporais.
+Nestes trabalhos, a amostragem aleatória é aplicada estimando-se o tamanho
+mínimo das amostras para que as características dos grupos sejam preservadas.
+
+\subsection{Amostragem Baseada em Fractais}
+	\label{subsec:reducao_fractais}
+
+Em vários trabalhos da literatura científica da área a análise de fractais
+mostrou-se uma técnica promissora na redução da dimensionalidade dos dados.
+No entanto, até o momento, não foram encontrados trabalhos que tenham aplicado
+técnicas de análise de fractais à redução de conjuntos de dados
+espaço-temporais.
+
+Neste trabalho propõe-se a aplicação da técnica de \emph{Box-plot counting} para
+efetuar a redução de dados. Esta técnica permite detectar a auto-similaridade
+dos dados pela contagem das células que contêm um ou mais pontos. Essa
+característica será usada para a detecção de ruídos e \emph{outliers},
+permitindo a escolha de amostras estratificadas pela densidade dos 
+hiper-retângulos em vários níveis de resolução.
