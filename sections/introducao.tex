@@ -48,7 +48,7 @@ tem alto custo computacional, de ordem $O(n^2)$ (quadrática) até $O(n^3)$
 conjuntos de dados como séries temporais de imagens de satélites de alta
 resolução.
 
-Neste trabalho, propomos uma nova abordagem para que se possa aproveitar
+Neste trabalho uma nova abordagem é proposta para que se possa aproveitar
 as vantagens dos algoritmos hierárquicos mesmo em grandes conjuntos de dados.
 Esta abordagem consiste em, inicialmente, reduzir o conjunto de dados, e em
 seguida, aplicar o agrupamento hierárquico neste conjunto de dados reduzido. Por
@@ -58,10 +58,10 @@ Espera-se que, com esta abordagem, seja possível aplicar o agrupamento
 hierárquico em tempo consideravelmente menor, mas que a perda de qualidade dos
 agrupamentos resultantes seja mínima.
 
-Esta proposta de trabalho está dividida da seguinte forma: na Subseção
+Esta proposta de trabalho está dividida da seguinte forma: na seção
 \ref{subsec:objetivos} estão listados o objetivo geral da pesquisa e os
-objetivos mais específicos. Na Subseção \ref{subsec:hipotese} encontra-se a 
-formulação da hipótese a ser averiguada durante o trabalho e na Subseção
+objetivos mais específicos. Na seção \ref{subsec:hipotese} encontra-se a 
+formulação da hipótese a ser averiguada durante o trabalho e na seção
 \ref{subsec:contribuicao} destaca-se a contribuição do trabalho. Na Seção
 \ref{sec:fundamentacao_teorica}, são apresentados os principais conceitos
 teóricos necessários para o desenvolvimento e entendimento do trabalho. Na Seção
@@ -90,7 +90,7 @@ Especificamente, deseja-se obter:
     \item Desenvolvimento de uma abordagem para a geração de amostras de séries
 		espaço-temporais por meio da análise de auto-similaridade;	
     
-    \item Avaliar experimentalmente as novas abordagens em termos de tempo de
+    \item Avaliação experimental das novas abordagens em termos de tempo de
 		execução, consumo de memória e qualidade dos agrupamentos gerados visando o
 		agrupamento dos diversos tipos de vegetação para identificação de áreas de
 		plantio de culturas como a cana-de-açúcar.
@@ -98,27 +98,19 @@ Especificamente, deseja-se obter:
 
 A etapa 1 encontra-se concluída e os resultados experimentais iniciais
 encontram-se descritos na Seção \ref{sec:resultados_preliminares}. A
-implementação da etapa 2 está em andamento espera-se concluí-la em .... 
+ etapa 2 encontra-se em final de implementação.
 	
 \subsection{Hipótese}
 	\label{subsec:hipotese}
 
-A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto dos
-dados de entrada permite executar o agrupamento hierárquico aglomerativo em
-tempo menor, mas mantendo a qualidade dos agrupamentos produzidos".
+A hipótese deste projeto de pesquisa consiste em: "A redução do conjunto de
+dados de entrada por meio de uma amostragem baseada em fractais permite executar o agrupamento hierárquico aglomerativo em
+tempo menor, mantendo a qualidade dos agrupamentos produzidos".
 
 \subsubsection{Amostragem baseada em fractais}
 
 A hipótese de uso da teoria dos fractais para a geração de amostras
-significativas baseadas na análise da auto-similaridade vem do fato de que
-técnicas de amostragem ingênuas (\textit{naive}), como amostragens aleatórias e
-amostragens estratificadas, não são adequadas para conjuntos de dados reais com
-presença de dados ruidosos e de exceções, uma vez que o comportamento desses
-algoritmos é imprevisível.
-Como não há atributos de classe disponíveis, pretende-se fazer uma amostragem
-baseada na densidade da estrutura \textit{box count}. O objetivo é obter um
-conjunto mínimo de instâncias que represente as características do conjunto
-original.
+significativas baseadas na análise da auto-similaridade vem do fato de que técnicas de amostragem ingênuas (\textit{naive}), como amostragens aleatórias e amostragens estratificadas, não são adequadas para conjuntos de dados reais com presença de dados ruidosos e de exceções, uma vez que o comportamento desses algoritmos é imprevisível. Como em muitos conjuntos de séries temporais não há atributos de classe disponíveis (necessários nas abordagens clássicas de amostragens estratificadas), pretende-se fazer uma amostragem baseada na densidade da estrutura \textit{box count}. O objetivo é obter um conjunto mínimo de instâncias que represente as características do conjunto original.
 
 \subsection{Contribuição}
 	\label{subsec:contribuicao}

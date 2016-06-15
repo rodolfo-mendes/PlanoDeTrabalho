@@ -1,18 +1,14 @@
 \section{Métodos de Pesquisa}
 	\label{sec:metodologia}
 	
-Inicialmente, o algoritmo proposto na seção \ref{sec:agrupamento_hierarquico}
-será implementado em linguagem de programação adequada, de forma que possam
-ser usadas diferentes técnicas de amostragem e diferentes medidas de distância.
-Posteriormente, através de experimentos, o algoritmo proposto deverá ser 
-avaliado em termos do tempo de execução e pela qualidade dos agrupamentos 
-gerados. O algoritmo será avaliado com diferentes tamanhos de amostras, número
-de grupos e medidas de distância. Para cada número de grupo e medida de
-distância, a versão do agrupamento hierárquico com amostragem será comparada
-ao agrupamento hierárquico convencional, isto é, com todos os dados do conjunto
-e também com o agrupamento gerado aleatoriamente.
+O algoritmo proposto na seção \ref{sec:agrupamento_hierarquico} foi implementado em linguagem R\footnote{https://www.r-project.org} e C/C++, de modo que podem
+ser usadas diferentes técnicas de amostragem e diferentes medidas de distância, entre elas a distância Euclidiana e a \textit{Dynamic Time Warping}.
+O algoritmo proposto vem sendo avaliado em termos do balanceamento do tempo de execução e da qualidade dos agrupamentos 
+gerados. O algoritmo será avaliado com diferentes tamanhos de amostras, número de grupos e medidas de distância. Para cada número de grupos e medida de distância, a versão do agrupamento hierárquico com amostragem será comparada ao agrupamento hierárquico convencional, isto é, com todos os dados do conjunto e também com o agrupamento gerado aleatoriamente.
 
 \subsection{Conjuntos de Dados}
 
-Os dados sobre os quais os algoritmos serão avaliados serão coletados pela 
-EMBRAPA e do repositório em \cite{global2016}.
+Os conjuntos de dados utilizados nos experimentos foram processados e fornecidos pela EMBRAPA \cite{embrapa2016} e têm resolução de 1 km/pixel. Na próxima etapa dos experimentos serão utilizados conjuntos de dados provenientes de imagens com resolução de 250 m/pixel. Outros conjuntos disponíveis  no repositório em \cite{global2016} também serão avaliados.
+
+% Os dados sobre os quais os algoritmos serão avaliados serão coletados pela EMBRAPA e do repositório em \cite{global2016}.
+

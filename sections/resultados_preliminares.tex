@@ -1,9 +1,9 @@
 \section{Resultados Preliminares}
 	\label{sec:resultados_preliminares}
 
-Nesta seção, será descrito o experimento preliminar cujo intuito foi comparar
+Nesta seção serão descritos os experimentos preliminares cujo intuito foi comparar
 o agrupamento hierárquico por amostragem, proposto na seção
-\ref{sec:agrupamento_hierarquico}, e o algoritmo AGNES, que constrói o
+\ref{sec:agrupamento_hierarquico} e o algoritmo AGNES, que constrói o
 agrupamento hierárquico aglomerativo com todo o conjunto de dados.
 
 O conjunto de dados utilizado nos testes são valores de índice NDVI
@@ -56,9 +56,9 @@ logarítmica.
 
 Para comparar a qualidade dos agrupamentos produzidos foram utilizados os
 índices Dunn e Davies-Boulding. Além do tamanho da amostragem, também foi
-testado se o número de grupos utilizados na poda influenciaria a qualidade dos
-agrupamentos produzidos. Os resultados obtidos para o índice Dunn são mostrados
-na tabela \ref{tab:indice_dunn}.
+avaliado se o número de grupos utilizados na poda influenciaria a qualidade dos
+agrupamentos produzidos. Os resultados obtidos para o índice Dunn são apresentados
+na Tabela \ref{tab:indice_dunn}.
 
 \input{tabelas/indiceDunn.tex}
 
@@ -95,8 +95,7 @@ dentro de um grupo e maior será a distância entre seus centros.
 Os dados mostrados na Tabela \ref{tab:indice_db} também indicam que a qualidade
 dos agrupamentos produzidos pelo algoritmo baseado em amostragem foi inferior.
 Isso também pode ser explicado pela garantia que o algoritmo AGNES oferece 
-de agrupar os pares mais próximos já no primeiro passo do algoritmo, pois 
-diminui a dispersão dos dados. O gráfico da Figura
+de agrupar os pares mais próximos já no primeiro passo do algoritmo, pois diminui a dispersão dos dados. O gráfico da Figura
 \ref{fig:indice_davies_bouldin} mostra que, com relação ao índice Dunn, este
 índice sofreu maior variação de acordo com o número de grupos e o tamanho das
 amostras. 
@@ -108,8 +107,7 @@ amostras.
 \subsection{Conclusões Preliminares}
 	\label{subsec:conclusoes_preliminares}
 	
-Através deste experimento, confirmou-se que o algoritmo proposto na Seção
-\ref{sec:agrupamento_hierarquico} permite que o agrupamento hierárquico
+Por meio destes experimentos confirmou-se que o algoritmo proposto na Seção \ref{sec:agrupamento_hierarquico} permite que o agrupamento hierárquico
 aglomerativo seja executado em tempo muito menor que o algoritmo original.
 Porém, a amostragem aleatória impactou negativamente na qualidade dos
 agrupamentos obtidos.
@@ -119,4 +117,4 @@ de dados para obter melhor desempenho do agrupamento hierárquico aglomerativo.
 Ao longo do trabalho proposto, pretende-se ampliar o escopo dos experimentos,
 averiguando o comportamento de outras medidas de distância, variar o tamanho
 das amostras e o número de grupos, assim como implementar novos métodos de 
-redução de dados. 
+redução de dados.
