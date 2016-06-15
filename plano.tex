@@ -11,6 +11,8 @@
 \voffset -1.5cm \hoffset -1.4cm
 
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[shortcuts]{extdash}
 \usepackage[brazil]{babel}
 \usepackage{graphicx,url}
 \usepackage{subfigure}
@@ -81,18 +83,27 @@
 \input{sections/resultados_preliminares.tex}
 \input{sections/cronograma.tex}
 
+\begin{flushleft}
 \ \\
-\noindent Uberlândia, 14 de Dezembro de 2015.\\
-
+\noindent Uberlândia, 15 de Junho de 2016. \\
 \ \\
 \noindent \textbf{Assinatura do Orientador:} \\
-
 \ \\
-\noindent \textbf{Assinatura do Aluno:}
+\noindent \textbf{Assinatura do Aluno:} \\
+\end{flushleft}
 
 \newpage
 
 \bibliographystyle{sbc}
 \bibliography{bib/plano,bib/books}
+
+\newpage
+
+\appendix
+\section{Resultados dos Experimentos}
+
+\input{tabelas/tempoExecucao.tex}
+\input{tabelas/indiceDunn.tex}
+\input{tabelas/indiceDb.tex}
 
 \end{document}
