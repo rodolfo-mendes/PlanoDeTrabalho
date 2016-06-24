@@ -14,11 +14,11 @@ NormalPos.top=32
 NormalPos.right=1507
 NormalPos.bottom=851
 Class=LaTeXView
-Document=sections\fundamentacao_teorica.tex
+Document=sections\cronograma.tex
 
 [Frame0_View0,0]
 TopLine=0
-Cursor=1048
+Cursor=240
 
 [Frame1]
 Flags=0
@@ -32,13 +32,13 @@ NormalPos.top=32
 NormalPos.right=1507
 NormalPos.bottom=851
 Class=LaTeXView
-Document=sections\introducao.tex
+Document=tabelas\cronograma.tex
 
 [Frame1_View0,0]
-TopLine=85
-Cursor=6236
+TopLine=0
+Cursor=1455
 
 [SessionInfo]
 FrameCount=2
-ActiveFrame=1
+ActiveFrame=0
 
